@@ -1,0 +1,83 @@
+{% extends 'header.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="page-top" id="templatemo_contact">
+</div> <!-- /.page-header -->
+
+<div class="contact-page">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-5 col-sm-6">
+                <h3 class="widget-title">LOGIN</h3>
+                <div class="contact-form">
+                    {{msg}}
+                    <form name="Loginform" id="loginform" action="{% url 'login'%}" method="POST">
+                        {% csrf_token %}
+                        <p>
+                            <input name="email" type="email" id="email" placeholder="Email">
+                        </p>
+                        <p>
+                            <input name="password" type="password" id="Password" placeholder="Password"> 
+                        </p>
+                        
+                       
+                        <input type="submit" class="mainBtn" id="submit" value="Login">
+                    </form>
+                    <a href="{% url 'register' %}"><button class="btn btn-primary" style="width: auto; background-color: rgb(13, 135, 235);"> Register </button></a>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                      <a href="{% url 'fpassword' %}" class="text"><small>Forgot password?</small></a>
+                    </div>
+                    <div class="col-6 text-right">
+                      <a href="{% url 'hotelsregister' %}" class="text"><small>Create new account</small></a>
+                    </div>         
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="partner-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item last">
+                    <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.partner-list -->
+
+{% endblock %}

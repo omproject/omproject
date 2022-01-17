@@ -1,0 +1,93 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="page-top" id="templatemo_contact">
+</div> <!-- /.page-header -->
+
+<div class="register-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-sm-6 map-wrapper">
+                <h3 class="widget-title"> </h3>
+                <div class="map-holder"></div>
+                <div class="register-infos">
+                   
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <h3 class="widget-title">Register</h3>
+                <div class="contact-form">
+                    <form name="form" id="registerform" action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        <p>
+                            <input name="fname" type="text" id="name" placeholder="First Name" required>
+                        </p>
+                        <p>
+                            <input name="lname" type="text" id="name" placeholder="Last Name" required>
+                        </p>
+                        <p>
+                            <input name="email" type="email" id="email" placeholder="Your Email" required> 
+                        </p>
+                        <p>
+                            <input name="address" type="text" id="address" placeholder="Your Address" required> 
+                        </p>
+                        <p>
+                            <input name="mobile" type="text" id="mobile" placeholder="Mobile" required> 
+                        </p>
+                        <p>
+                            <input name="password" type="password" id="password" placeholder="Password" required> 
+                        </p>  
+                        <input type="submit" class="mainBtn" id="submit" value="Create account">
+                    </form>
+                    <a href="{% url 'login' %}"><button class="btn btn-primary">Login</button></a>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="partner-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item last">
+                    <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.partner-list -->
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+
+        <div class="page-top" id="templatemo_contact">
+        </div> <!-- /.page-header -->
+
+        <div class="contact-page">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-5 col-sm-6">
+                        <h3 class="widget-title">Edit Profile</h3>
+                        <div class="contact-form">
+                            <form name="contactform" id="contactform" action="{% url 'profile' %}" method="POST">
+                                {% csrf_token %}
+                                <p>
+                                    <label class="form-control-label" for="input-name">First Name </label>
+                                    <input name="fname" type="text" id="name" value="{{uid.fname}}" placeholder="First Name">
+                                </p>
+                                <p>
+                                    <label class="form-control-label" for="input-name">Last Name </label>
+                                    <input name="lname" type="text" id="name" value="{{uid.lname}}" placeholder="Last Name">
+                                </p>
+                                <p>
+                                    <label class="form-control-label" for="input-email">Email </label>
+                                    <input name="email" type="email" id="email" value="{{uid.email}}" placeholder="Email" disabled> 
+                                </p>
+                                <p>
+                                    <label class="form-control-label" for="input-address">Address </label>
+                                    <input name="address" type="text" id="address" value="{{uid.address}}" placeholder="Your Address"> 
+                                </p>
+                                <p>
+                                    <label class="form-control-label" for="input-mobile">Mobile </label>
+                                    <input name="mobile" type="text" id="mobile" value="{{uid.mobile}}" placeholder="Mobile"> 
+                                </p>
+                                <p>
+                                    <label class="form-control-label" for="input-password">Password </label>
+                                    <input name="password" type="password" id="password" value="{{uid.password}}" placeholder="Password"> 
+                                </p>
+                                <input type="submit" class="mainBtn" id="submit" value="Edit Profile">
+                            </form>
+                        </div> <!-- /.contact-form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="partner-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item last">
+                            <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.partner-list -->
+
+
+
+       
+
+{% endblock %}

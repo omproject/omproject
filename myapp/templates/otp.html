@@ -1,0 +1,75 @@
+{% extends 'header.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="page-top" id="templatemo_contact">
+</div> <!-- /.page-header -->
+
+
+
+<div class="otp-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-sm-6 map-wrapper">
+                <h3 class="widget-title"></h3>
+                
+            <div class="col-md-5 col-sm-6" style="margin: 50px; padding-left: 500px;">
+                <h3 class="widget-title">OTP</h3>
+                <div class="otp-form">
+                    <form name="otpform" id="otpform" action="{% url 'otp' %}" method="POST">
+                        {% csrf_token %}
+                        <p>
+                            <input name="otp" type="text" id="otp" placeholder="ENTER OTP">
+                        </p>
+                        <input type="submit" class="mainBtn" id="submit" value="Verify OTP">
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="partner-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item">
+                    <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="partner-item last">
+                    <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                </div> <!-- /.partner-item -->
+            </div> <!-- /.col-md-2 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div> <!-- /.partner-list -->
+
+
+{% endblock %}
