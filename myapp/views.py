@@ -21,16 +21,21 @@ def index(request):
 def about(request):
     return render(request,'about.html')
 
-def view_hotel(request):
-    hotel = Hotel.objects.all()[::-1]
-    return render(request,'view-hotel.html',{'hotel':hotel})    
+def Aview_hotels(request,pk):
+    hotel = Hotel.objects.get(id=pk)
+    return render(request,'Aview_hotels.html',{'hotel':hotel})    
+
+   
 
 def hotels2(request):
     hotel = Hotel.objects.all()[::-1]
     return render(request,'hotels2.html',{'hotel':hotel}) 
 
 def register(request):
-    return render(request,'register.html') 
+    return render(request,'register.html')
+
+def booking(request):
+    return render(request,'booking.html')     
 
 def otp(request):
     return render(request,'otp.html')

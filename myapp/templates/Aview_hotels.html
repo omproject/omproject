@@ -3,6 +3,8 @@
 
 {% block content %}
 
+
+
 <style>
     body {
   font-family: 'open sans';
@@ -168,7 +170,6 @@ img {
 </style>
 <br><br><br><br><br><br><br><br>
 
-{% for vid in hotel %}
 <div class="container">
     <div class="card">
         <div class="container-fliud">
@@ -176,7 +177,7 @@ img {
                 <div class="preview col-md-6">
                     
                     <div class="preview-pic tab-content">
-                      <div class="tab-pane active" id="pic-1"><img src=" {{vid.hotel_photos.url}}" /></div>
+                      <div class="tab-pane active" id="pic-1"><img src=" {{hotel.hotel_photos.url}}" /></div>
                       
                     </div>
                     <ul class="preview-thumbnail nav nav-tabs">
@@ -186,7 +187,7 @@ img {
                     
                 </div>
                 <div class="details col-md-6">
-                    <h3 class="product-title">{{vid.hotel_name}}</h3>
+                    <h3 class="product-title">{{hotel.hotel_name}}</h3>
                     <div class="rating">
                         <div class="stars">
                             <span class="fa fa-star checked"></span>
@@ -197,15 +198,15 @@ img {
                         </div>
                         <span class="review-no"> Reviews</span>
                     </div>
-                    <p class="product-description"></p>
+                    <p class="product-description">{{hotel.add_details}}</p>
                     <h4 class="price">current price: <span></span></h4>
-                    <p class="vote"><strong></strong>{{vid.hotel_adderss}}<strong></strong></p>
-                    <h5 class="sizes">Country:{{vid.hotel_country}}
+                    <p class="vote"><strong></strong>{{hotel.hotel_adderss}}<strong></strong></p>
+                    <h5 class="sizes">Country:{{hotel.hotel_country}}
                         
                     </h5>
                     
                     <div class="action">
-                       <a href="{% url 'Aview_hotels' vid.id %}"> <button class="btn-success" type="submit">View detail</button> </a>
+                       <a href="{% url 'booking' %}"> <button class="btn-success" type="submit">Book Now</button> </a>
                         
                     </div>
                 </div>
@@ -213,7 +214,6 @@ img {
         </div>
     </div>
 </div>
-{% endfor %}
 
 
 
@@ -222,4 +222,25 @@ img {
 <br><br><br>
 
 <br><br><br>
-        {% endblock %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

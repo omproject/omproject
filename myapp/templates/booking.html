@@ -1,0 +1,56 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+
+<br><br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br><br><br>
+
+
+
+
+
+<div class="register-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-sm-6 map-wrapper">
+                <h3 class="widget-title"> </h3>
+                <div class="map-holder"></div>
+                <div class="register-infos">
+                   
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6">
+                <h3 class="widget-title">Booking </h3>
+                <div class="contact-form">
+                    <form name="form" id="registerform" action="{% url 'booking' %}" method="POST">
+                        {% csrf_token %}
+                            <label>CHECK IN</label>
+                            <input name="checkin" type="date" id="name" placeholder="" required>
+                            <label>CHECK OUT</label>
+                            <input name="checkout" type="date" id="name" placeholder="Last Name" required>
+                            <label>EMAIL</label>
+                            <input name="email" type="email" id="email" placeholder="Your Email" required> 
+                        <input type="submit" class="mainBtn" id="submit" value="Book">
+                    </form>
+                    
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<br><br><br>
+
+<br><br><br>
+
+
+
+
+
+
+
+{% endblock %}
