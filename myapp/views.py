@@ -26,7 +26,8 @@ def view_hotel(request):
     return render(request,'view-hotel.html',{'hotel':hotel})    
 
 def services(request):
-    return render(request,'services.html') 
+    hotel = Hotel.objects.all()[::-1]
+    return render(request,'services.html',{'hotel':hotel}) 
 
 def register(request):
     return render(request,'register.html') 

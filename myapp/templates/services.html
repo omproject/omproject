@@ -3,201 +3,223 @@
 
 {% block content %}
 
-        <div class="page-top" id="templatemo_services">
-        </div> <!-- /.page-header -->
+<style>
+    body {
+  font-family: 'open sans';
+  overflow-x: hidden; }
 
-        <div class="middle-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="widget-item">
-                            <h3 class="widget-title">Latest News</h3>
-                            <div class="post-small">
-                                <div class="post-date">
-                                    <span class="time">18</span>
-                                    <span>June</span>
-                                </div> <!-- /.post-thumb -->
-                                <div class="post-content">
-                                    <h4><a href="#">Lorem Ipsum</a></h4>
-                                    <span>Donec auctor iaculis</span>
-                                    <p>Aenean laoreet ornare purus. Nunc condimentum augue sed massa iaculis, vel blandit sapien consectetur.</p>
-                                </div> <!-- /.post-content -->
-                            </div> <!-- /.post-small -->
-                            <div class="post-small">
-                                <div class="post-date">
-                                    <span class="time">14</span>
-                                    <span>June</span>
-                                </div> <!-- /.post-thumb -->
-                                <div class="post-content">
-                                    <h4><a href="#">Lorem Ipsum</a></h4>
-                                    <span>Donec auctor iaculis</span>
-                                    <p>Cras mollis bibendum fringilla. Donec malesuada convallis ligula, iaculis tincidunt massa tempus at.</p>
-                                </div> <!-- /.post-content -->
-                            </div> <!-- /.post-small -->
-                            <div class="post-small">
-                                <div class="post-date">
-                                    <span class="time">12</span>
-                                    <span>June</span>
-                                </div> <!-- /.post-thumb -->
-                                <div class="post-content">
-                                    <h4><a href="#">Lorem Ipsum</a></h4>
-                                    <span>Donec auctor iaculis</span>
-                                    <p>Maecenas lacinia sodales aliquet. Maecenas consequat orci et neque convallis.</p>
-                                </div> <!-- /.post-content -->
-                            </div> <!-- /.post-small -->
-                        </div> <!-- /.widget-item -->
-                    </div> <!-- /.col-md-4 -->
-                    <div class="col-md-4">
-                        <div class="widget-item">
-                            <h3 class="widget-title">Consulting</h3>
-                            <div class="sample-thumb">
-                                <img src="{% static 'images/event_1.jpg' %}" alt="">
-                            </div> <!-- /.sample-thumb -->
-                            <h4 class="consult-title">Donec auctor iaculis libero ut ullamcorper</h4>
-                            <p>Integer viverra erat nisi, sed faucibus velit ultricies facilisis. Nam eu felis ac ex fermentum scelerisque nec sed urna. Cras mollis bibendum fringilla.<br><br>Fusce condimentum neque eget diam blandit consequat. Integer at urna at risus ultrices vestibulum. Fusce pharetra viverra commodo.</p>
-                        </div> <!-- /.widget-item -->
-                    </div> <!-- /.col-md-4 -->
-                    <div class="col-md-4">
-                        <div class="widget-item">
-                            <h3 class="widget-title">Our Services</h3>
-                            <div class="service-item">
-                                <div class="service-icon">
-                                    <i class="fa fa-bell-o"></i>
-                                </div> <!-- /.service-icon -->
-                                <div class="service-content">
-                                    <h4>Fusce pharetra</h4>
-                                    <p>Change icons by <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/" target="_blank">Font Awesome</a> (version 4). Example: <strong>&lt;i class=&quot;fa fa-bell-o&quot;&gt;&lt;/i&gt;</strong></p>
-                                </div> <!-- /.service-content -->
-                            </div> <!-- /.service-item -->
-                            <div class="service-item">
-                                <div class="service-icon">
-                                    <i class="fa fa-cogs"></i>
-                                </div> <!-- /.service-icon -->
-                                <div class="service-content">
-                                    <h4>Nunc rhoncus</h4>
-                                    <p>Mauris vel tincidunt purus. Aenean laoreet ornare purus. Nunc condimentum augue sed massa.</p>
-                                </div> <!-- /.service-content -->
-                            </div> <!-- /.service-item -->
-                            <div class="service-item">
-                                <div class="service-icon">
-                                    <i class="fa fa-pencil"></i>
-                                </div> <!-- /.service-icon -->
-                                <div class="service-content">
-                                    <h4>Curabitur quis</h4>
-                                    <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
-                                </div> <!-- /.service-content -->
-                            </div> <!-- /.service-item -->
-                        </div> <!-- /.widget-item -->
-                    </div> <!-- /.col-md-4 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.middle-content -->
+img {
+  max-width: 100%; }
+
+.preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media screen and (max-width: 996px) {
+    .preview {
+      margin-bottom: 20px; } }
+
+.preview-pic {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.preview-thumbnail.nav-tabs {
+  border: none;
+  margin-top: 15px; }
+  .preview-thumbnail.nav-tabs li {
+    width: 18%;
+    margin-right: 2.5%; }
+    .preview-thumbnail.nav-tabs li img {
+      max-width: 100%;
+      display: block; }
+    .preview-thumbnail.nav-tabs li a {
+      padding: 0;
+      margin: 0; }
+    .preview-thumbnail.nav-tabs li:last-of-type {
+      margin-right: 0; }
+
+.tab-content {
+  overflow: hidden; }
+  .tab-content img {
+    width: 100%;
+    -webkit-animation-name: opacity;
+            animation-name: opacity;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s; }
+
+.card {
+  margin-top: 50px;
+  background: #eee;
+  padding: 3em;
+  line-height: 1.5em; }
+
+@media screen and (min-width: 997px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; } }
+
+.details {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.colors {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.product-title, .price, .sizes, .colors {
+  text-transform: UPPERCASE;
+  font-weight: bold; }
+
+.checked, .price span {
+  color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+  margin-bottom: 15px; }
+
+.product-title {
+  margin-top: 0; }
+
+.size {
+  margin-right: 10px; }
+  .size:first-of-type {
+    margin-left: 40px; }
+
+.color {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px; }
+  .color:first-of-type {
+    margin-left: 20px; }
+
+.add-to-cart, .like {
+  background: #ff9f1a;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover, .like:hover {
+    background: #b36800;
+    color: #fff; }
+
+.not-available {
+  text-align: center;
+  line-height: 2em; }
+  .not-available:before {
+    font-family: fontawesome;
+    content: "\f00d";
+    color: #fff; }
+
+.orange {
+  background: #ff9f1a; }
+
+.green {
+  background: #85ad00; }
+
+.blue {
+  background: #0076ad; }
+
+.tooltip-inner {
+  padding: 1.3em; }
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+</style>
+<br><br><br><br><br><br><br><br>
+
+{% for vid in hotel %}
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    
+                    <div class="preview-pic tab-content">
+                      <div class="tab-pane active" id="pic-1"><img src=" {{vid.hotel_photos.url}}" /></div>
+                      
+                    </div>
+                    <ul class="preview-thumbnail nav nav-tabs">
+                      <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="" /></a></li>
+                      
+                    </ul>
+                    
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">{{vid.hotel_name}}</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <span class="review-no">41 reviews</span>
+                    </div>
+                    <p class="product-description">{{vid.add_details}}</p>
+                    <h4 class="price">current price: <span>$180</span></h4>
+                    <p class="vote"><strong></strong>{{vid.hotel_adderss}}<strong></strong></p>
+                    <h5 class="sizes">Country:{{vid.hotel_country}}
+                        
+                    </h5>
+                    
+                    <div class="action">
+                        <button class="add-to-cart btn btn-default" type="button">Book Now</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 
 
-        <div class="go-act">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="first-map"></div>
-                    </div> <!-- /.col-md-4 -->
-                    <div class="col-md-8">
-                        <div class="act-btn">
-                            <div class="inner">
-                                <div class="price">
-                                    $5,600
-                                </div> <!-- /.price -->
-                                <div class="title">
-                                    <h2>Europa Tour</h2>
-                                    <span>Belgium, Austria, Poland, France, England</span>
-                                </div>
-                            </div> <!-- /.inner -->
-                            <a href="#" class="link">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </div> <!-- /.act-btn -->
-                    </div> <!-- /.col-md-8 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.go-act -->
 
+        
+<br><br><br>
 
-
-        <div class="ticket-list">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="ticket-item">
-                            <h4><a href="#">Airlines</a></h4>
-                            <p>Travel HTML Template is provided by <span class="blue">template</span><span class="green">mo</span>. Download, modify and use this layout for your travel or tour websites.<br><br> Aliquam justo lectus, fermentum vitae libero sollicitudin, tincidunt accumsan magna.Vestibulum congue lorem odio, at sodales nisi luctus quis.</p>
-                            <a href="#" class="ticket-btn">Buy a ticket</a>
-                        </div> <!-- /.ticket-item -->
-                    </div> <!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="ticket-item">
-                            <h4><a href="#">Best Cities</a></h4>
-                            <p>Donec sit amet metus in quam consectetur posuere. Mauris scelerisque tortor sit amet porta lacinia. Suspendisse sit amet nisi volutpat, placerat.<br><br>Vestibulum congue lorem odio, at sodales nisi luctus quis. Suspendisse suscipit ligula libero, id consectetur magna.</p>
-                            <a href="#" class="ticket-btn">Explore Cities</a>
-                        </div> <!-- /.ticket-item -->
-                    </div> <!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="ticket-item">
-                            <h4><a href="#">Travel Guides</a></h4>
-                            <p>Suspendisse id felis ac orci dignissim efficitur non eget elit. Maecenas lacinia sodales aliquet. Maecenas consequat orci et neque convallis volutpat.<br><br> Integer viverra erat nisi, sed faucibus velit ultricies facilisis. Nam eu felis ac ex fermentum scelerisque.</p>
-                            <a href="#" class="ticket-btn">Details</a>
-                        </div> <!-- /.ticket-item -->
-                    </div> <!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="ticket-item">
-                            <h4><a href="#">Special Events</a></h4>
-                            <p>Aliquam ultricies eros commodo, scelerisque lorem sit amet, mollis odio. Ut malesuada sapien sit amet risus lobortis bibendum. Pellentesque eu ante augue.<br><br>Mauris vel tincidunt purus. Aenean laoreet ornare purus. Nunc condimentum augue sed massa iaculis, vel blandit.</p>
-                            <a href="#" class="ticket-btn">Check a calendar</a>
-                        </div> <!-- /.ticket-item -->
-                    </div> <!-- /.col-md-3 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.ticket-list -->
-
-
-
-
-        <div class="partner-list">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="partner-item">
-                            <img src="{% static 'ssimages/partners/partner1.png' %}" alt="">
-                        </div> <!-- /.partner-item -->
-                    </div> <!-- /.col-md-2 -->
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="partner-item">
-                            <img src="{% static 'images/partners/partner2.png' %}" alt="">
-                        </div> <!-- /.partner-item -->
-                    </div> <!-- /.col-md-2 -->
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="partner-item">
-                            <img src="{% static 'images/partners/partner3.png' %}" alt="">
-                        </div> <!-- /.partner-item -->
-                    </div> <!-- /.col-md-2 -->
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="partner-item">
-                            <img src="{% static 'images/partners/partner1.png' %}" alt="">
-                        </div> <!-- /.partner-item -->
-                    </div> <!-- /.col-md-2 -->
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="partner-item">
-                            <img src="{% static 'images/partners/partner2.png' %}" alt="">
-                        </div> <!-- /.partner-item -->
-                    </div> <!-- /.col-md-2 -->
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="partner-item last">
-                            <img src="{% static 'images/partners/partner3.png' %}" alt="">
-                        </div> <!-- /.partner-item -->
-                    </div> <!-- /.col-md-2 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /.partner-list -->
-
-
-
+<br><br><br>
         {% endblock %}
