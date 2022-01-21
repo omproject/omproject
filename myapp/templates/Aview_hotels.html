@@ -199,14 +199,14 @@ img {
                         <span class="review-no"> Reviews</span>
                     </div>
                     <p class="product-description">{{hotel.add_details}}</p>
-                    <h4 class="price">current price: <span></span></h4>
+                    <h4 class="price">current price: <span></span>{{hotel.hotel_price}}</h4>
                     <p class="vote"><strong></strong>{{hotel.hotel_adderss}}<strong></strong></p>
                     <h5 class="sizes">Country:{{hotel.hotel_country}}
                         
                     </h5>
                     
                     <div class="action">
-                       <a href="{% url 'booking' %}"> <button class="btn-success" type="submit">Book Now</button> </a>
+                       <a href="{% url 'booking' hotel.id %}"> <button class="btn-success" type="submit">Book Now</button> </a>
                         
                     </div>
                 </div>

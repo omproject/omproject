@@ -34,6 +34,7 @@ def add_hotels(request):
             hotel_country = request.POST['country'],
             hotel_rooms = int(request.POST['rooms']),
             hotel_mobile = request.POST['mobile'],
+            hotel_price = request.POST['price'],
             hotel_wifi = True if request.POST['wifi'] == 'yes' else False,
             hotel_photos = request.FILES['photos'],
             add_details = request.POST['adddetails'],

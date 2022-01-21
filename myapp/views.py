@@ -34,8 +34,9 @@ def hotels2(request):
 def register(request):
     return render(request,'register.html')
 
-def booking(request):
-    return render(request,'booking.html')     
+def booking(request,bk):
+    hotel = Hotel.objects.get(id=bk)
+    return render(request,'booking.html',{'hotel':hotel})     
 
 def otp(request):
     return render(request,'otp.html')

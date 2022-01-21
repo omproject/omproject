@@ -11,30 +11,55 @@
 
 
 
+
+
 <div class="register-page">
     <div class="container">
         <div class="row">
-            <div class="col-md-7 col-sm-6 map-wrapper">
-                <h3 class="widget-title"> </h3>
-                <div class="map-holder"></div>
-                <div class="register-infos">
-                   
-                </div>
-            </div>
+            
             <div class="col-md-5 col-sm-6">
                 <h3 class="widget-title">Booking </h3>
                 <div class="contact-form">
-                    <form name="form" id="registerform" action="{% url 'booking' %}" method="POST">
+                    <form name="form" id="registerform" action="{% url 'booking' hotel.id %}" method="POST">
                         {% csrf_token %}
+                            <label>TITLE</label>
+                            <select name="Mr" class="form-control" id="">
+                                <option value="mr">MR</option>
+                                <option value="mrs">MRS</option>
+                              </select>
+                              <br>
+                            <label>NAME</label>
+                            <input name="name" type="name" id="name" placeholder="Name" required>                       
                             <label>CHECK IN</label>
                             <input name="checkin" type="date" id="name" placeholder="" required>
                             <label>CHECK OUT</label>
-                            <input name="checkout" type="date" id="name" placeholder="Last Name" required>
+                            <input name="checkout" type="date" id="name" placeholder="" required>
                             <label>EMAIL</label>
-                            <input name="email" type="email" id="email" placeholder="Your Email" required> 
+                            <input name="email" type="email" id="email" placeholder="Your Email" required>
+                            <label>MOBILE</label>
+                            <input name="mobile" type="text" id="mobile" placeholder="Contact Number" required> 
                         <input type="submit" class="mainBtn" id="submit" value="Book">
                     </form>
-                    
+                    <br><br><br>
+
+                    <br><br><br>
+                    <li>
+                        <div class="overlay"></div>
+                        <img src="{{hotel.hotel_photos.url}}" alt="Special 3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5 col-lg-4">
+                                    <div class="flex-caption visible-lg">
+                                        <span class="price">{{hotel.hotel_price}}</span>
+                                        <h3 class="title">{{hotel.hotel_name}}</h3>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                                       
                 </div> 
             </div>
         </div>

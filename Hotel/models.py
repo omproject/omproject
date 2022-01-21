@@ -22,6 +22,7 @@ class Hotel(models.Model):
     hotel_country = models.CharField(max_length=20,default="india")
     hotel_rooms = models.IntegerField()
     hotel_mobile = models.CharField(max_length=20)
+    hotel_price = models.CharField(max_length=10,default="0")
     hotel_wifi = models.BooleanField()
     hotel_photos = models.FileField(upload_to='hotel pic',null=True,blank=True)
     add_details = models.TextField()

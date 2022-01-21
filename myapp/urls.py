@@ -11,7 +11,7 @@ urlpatterns = [
     path('login/',views.login,name='login'),
     path('logout/',views.logout,name='logout'),
     path('fpassword/',views.fpassword,name='fpassword'),
-    path('booking/',views.booking,name='booking'),
+    path('booking/<int:bk>',views.booking,name='booking'),
     path('Aview_hotels/<int:pk>',views.Aview_hotels,name='Aview_hotels'),
 ]
 
