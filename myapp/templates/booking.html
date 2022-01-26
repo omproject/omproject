@@ -20,24 +20,19 @@
             <div class="col-md-5 col-sm-6">
                 <h3 class="widget-title">Booking </h3>
                 <div class="contact-form">
+                    {{msg}}
                     <form name="form" id="registerform" action="{% url 'booking' hotel.id %}" method="POST">
                         {% csrf_token %}
-                            <label>TITLE</label>
-                            <select name="Mr" class="form-control" id="">
-                                <option value="mr">MR</option>
-                                <option value="mrs">MRS</option>
-                              </select>
                               <br>
-                            <label>NAME</label>
-                            <input name="name" type="name" id="name" placeholder="Name" required>                       
+                                                   
                             <label>CHECK IN</label>
-                            <input name="checkin" type="date" id="name" placeholder="" required>
+                            <input name="check_in" type="date" id="name" placeholder="check_in" required>
                             <label>CHECK OUT</label>
-                            <input name="checkout" type="date" id="name" placeholder="" required>
-                            <label>EMAIL</label>
-                            <input name="email" type="email" id="email" placeholder="Your Email" required>
-                            <label>MOBILE</label>
-                            <input name="mobile" type="text" id="mobile" placeholder="Contact Number" required> 
+                            <input name="check_out" type="date" id="name" placeholder="check_out" required>
+                            <label>No_PERSON <span style="color: red; font-size: smaller;">*Maximum 4 person per room Allow </span></label>
+                            <input name="no_person" type="number" id="no_person" placeholder="No_PERSON" required>
+                            <label>BOOKINGPRICE</label>
+                            <input name="bookprice" type="text" id="bookprice" value="{{hotel.hotel_price}}" placeholder="Booking Price" disabled> 
                         <input type="submit" class="mainBtn" id="submit" value="Book">
                     </form>
                     <br><br><br>

@@ -1,7 +1,11 @@
+from plistlib import UID
+from re import T
 from django.core.checks import messages
 from django.shortcuts import redirect, render
 from django.urls import path
+# from datetime import date
 
+from django.http.response import HttpResponse
 from Hotel.models import Hotel
 from .models import *
 from random import choices,choice,randrange
@@ -36,6 +40,32 @@ def register(request):
 
 def booking(request,bk):
     hotel = Hotel.objects.get(id=bk)
+    uid = User.objects.get(email=request.session['email']),
+
+    if request.method == 'POST': 
+        price =  int(request.POST['no_person']) / 4
+        if price == int(price):
+            price = price * int(hotel.hotel_price)
+        price = (int(price)+1) * int(hotel.hotel_price)
+
+        # date
+
+        # check_in = request.POST['check_in'],
+        # check_out = request.POST['check_out'],
+
+
+
+
+        bookingUser.objects.create(
+            uid = User.objects.get(email=request.session['email']),
+            hname = hotel,
+            check_in = request.POST['check_in'],
+            check_out = request.POST['check_out'],
+            no_person = request.POST['no_person'], 
+            bookprice = price,
+        )
+        msg = 'Hotel is Book'
+        return render(request,'booking.html',{'hotel':hotel,'msg':msg,'uid':uid})
     return render(request,'booking.html',{'hotel':hotel})     
 
 def otp(request):

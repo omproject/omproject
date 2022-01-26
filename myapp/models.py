@@ -1,5 +1,7 @@
 from re import U
+from turtle import title
 from django.db import models
+from Hotel.models import Hotel
 
 # Create your models here.
 
@@ -20,15 +22,15 @@ def __str__(self):
 class bookingUser(models.Model):
 
     uid = models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    hname = models.ForeignKey(Hotel,on_delete=models.CASCADE)
     check_in = models.DateField()
     check_out = models.DateField()
-    email = models.EmailField(unique=True)
-    mobile = models.CharField(max_length=10)
-
+    no_person = models.IntegerField()
+    bookprice = models.IntegerField(default=0)
+    
 
     def __str__(self):
-        return self.name + ''
+        return self.uid.fname + '' + self.hname.hotel_name  
 
      
     
