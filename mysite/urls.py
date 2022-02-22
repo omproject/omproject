@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('myapp.urls')),
     path('hotels/',include('Hotel.urls')),
 
+
 ]
 
 if settings.DEBUG:

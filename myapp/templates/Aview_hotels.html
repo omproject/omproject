@@ -170,6 +170,7 @@ img {
 </style>
 <br><br><br><br><br><br><br><br>
 
+
 <div class="container">
     <div class="card">
         <div class="container-fliud">
@@ -178,7 +179,19 @@ img {
                     
                     <div class="preview-pic tab-content">
                       <div class="tab-pane active" id="pic-1"><img src=" {{hotel.hotel_photos.url}}" /></div>
-                      
+                      <div class="preview-pic tab-content">                    
+                      <div class="tab-pane" id="pic-2"><img src="{{hotel.bed_room.url}}" /></div>
+                      <div class="tab-pane" id="pic-3"><img src="{{hotel.beds_room.url}}" /></div>
+                      <div class="tab-pane" id="pic-4"><img src="{{hotel.swimming_pool.url}}" /></div>
+                      <div class="tab-pane" id="pic-5"><img src="{{hotel.hotel_frontview.url}}" /></div>
+                    </div>
+                    <ul class="preview-thumbnail nav nav-tabs">
+                      <li><a data-target="#pic-2" data-toggle="tab"><img src="{{hotel.bed_room.url}}" /></a></li>
+                      <li><a data-target="#pic-3" data-toggle="tab"><img src="{{hotel.beds_room.url}}" /></a></li>
+                      <li><a data-target="#pic-4" data-toggle="tab"><img src="{{hotel.swimming_pool.url}}" /></a></li>
+                      <li><a data-target="#pic-5" data-toggle="tab"><img src="{{hotel.hotel_frontview.url}}" /></a></li>
+                    </ul> 
+                    
                     </div>
                     <ul class="preview-thumbnail nav nav-tabs">
                       <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="" /></a></li>
@@ -218,11 +231,48 @@ img {
 
 
 
+
         
 <br><br><br>
 
 <br><br><br>
 
+<div class="partner-list">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-2 col-sm-4 col-xs-6">
+              <div class="partner-item">
+                  <img src="{% static 'images/partners/partner1.png' %}" alt="">
+              </div> <!-- /.partner-item -->
+          </div> <!-- /.col-md-2 -->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+              <div class="partner-item">
+                  <img src="{% static 'images/partners/partner2.png' %}" alt="">
+              </div> <!-- /.partner-item -->
+          </div> <!-- /.col-md-2 -->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+              <div class="partner-item">
+                  <img src="{% static 'images/partners/partner3.png' %}" alt="">
+              </div> <!-- /.partner-item -->
+          </div> <!-- /.col-md-2 -->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+              <div class="partner-item">
+                  <img src="{% static 'images/partners/partner1.png' %}" alt="">
+              </div> <!-- /.partner-item -->
+          </div> <!-- /.col-md-2 -->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+              <div class="partner-item">
+                  <img src="{% static 'images/partners/partner2.png' %}" alt="">
+              </div> <!-- /.partner-item -->
+          </div> <!-- /.col-md-2 -->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+              <div class="partner-item last">
+                  <img src="{% static 'images/partners/partner3.png' %}" alt="">
+              </div> <!-- /.partner-item -->
+          </div> <!-- /.col-md-2 -->
+      </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.partner-list -->
 
 {% endblock %}
 

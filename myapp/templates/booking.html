@@ -16,46 +16,43 @@
 <div class="register-page">
     <div class="container">
         <div class="row">
-            
-            <div class="col-md-5 col-sm-6">
+
+            <div class="col-md-6">
                 <h3 class="widget-title">Booking </h3>
                 <div class="contact-form">
                     {{msg}}
                     <form name="form" id="registerform" action="{% url 'booking' hotel.id %}" method="POST">
                         {% csrf_token %}
-                              <br>
-                                                   
-                            <label>CHECK IN</label>
-                            <input name="check_in" type="date" id="name" placeholder="check_in" required>
-                            <label>CHECK OUT</label>
-                            <input name="check_out" type="date" id="name" placeholder="check_out" required>
-                            <label>No_PERSON <span style="color: red; font-size: smaller;">*Maximum 4 person per room Allow </span></label>
-                            <input name="no_person" type="number" id="no_person" placeholder="No_PERSON" required>
-                            <label>BOOKINGPRICE</label>
-                            <input name="bookprice" type="text" id="bookprice" value="{{hotel.hotel_price}}" placeholder="Booking Price" disabled> 
+                        <br>
+
+                        <label>CHECK IN</label>
+                        <input name="check_in" type="date" id="name" placeholder="check_in" required>
+                        <label>CHECK OUT</label>
+                        <input name="check_out" type="date" id="name" placeholder="check_out" required>
+                        <label>No_PERSON <span style="color: red; font-size: smaller;">*Maximum 4 person per room Allow
+                            </span></label>
+                        <input name="no_person" type="number" id="no_person" placeholder="No_PERSON" required>
+                        <label>BOOKINGPRICE</label>
+                        <input name="bookprice" type="text" id="bookprice" value="{{hotel.hotel_price}}"
+                            placeholder="Booking Price" disabled>
                         <input type="submit" class="mainBtn" id="submit" value="Book">
                     </form>
-                    <br><br><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{{hotel.hotel_photos.url}}"  class="img-fluid w-100" alt="Special 3" style="width: 100%;">
+                <div class="flex-caption visible-lg" style="position: static;">
+                    <span class="price">{{hotel.hotel_price}}</span>
+                    <h3 class="title">{{hotel.hotel_name}}</h3>
+                </div>
+            </div>
 
-                    <br><br><br>
-                    <li>
-                        <div class="overlay"></div>
-                        <img src="{{hotel.hotel_photos.url}}" alt="Special 3">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-5 col-lg-4">
-                                    <div class="flex-caption visible-lg">
-                                        <span class="price">{{hotel.hotel_price}}</span>
-                                        <h3 class="title">{{hotel.hotel_name}}</h3>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                                       
-                </div> 
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-lg-4">
+                
             </div>
         </div>
     </div>

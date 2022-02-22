@@ -18,11 +18,12 @@ def hotelsprofile(request):
 
 def hotelstables(request):
     uid = User.objects.get(email=request.session['email'])
-    return render(request,'hotelstables.html',{'uid':uid})
+    hotels = Hotel.objects.all()[::-1]
+    return render(request,'hotelstables.html',{'uid':uid,'hotel':hotels})
 
-def hotelsupgrade(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'hotelsupgrade.html',{'uid':uid})
+# def hotelsupgrade(request):
+#     uid = User.objects.get(email=request.session['email'])
+#     return render(request,'hotelsupgrade.html',{'uid':uid})
 
 def add_hotels(request):
     uid = User.objects.get(email=request.session['email'])
@@ -30,16 +31,19 @@ def add_hotels(request):
         Hotel.objects.create(
             uid = uid,
             hotel_name = request.POST['hotelname'],
-            hotel_adderss = request.POST['address'],
-            hotel_country = request.POST['country'],
-            hotel_rooms = int(request.POST['rooms']),
-            hotel_mobile = request.POST['mobile'],
-            hotel_price = request.POST['price'],
-            hotel_wifi = True if request.POST['wifi'] == 'yes' else False,
-            hotel_photos = request.FILES['photos'],
-            add_details = request.POST['adddetails'],
-            hotel_acroom = request.POST['acroom'],
-
+            hotel_address = request.POST['hoteladdress'],
+            hotel_country = request.POST['hotelcountry'],
+            hotel_rooms = int(request.POST['hotelsrooms']),
+            hotel_mobile = request.POST['hotelmobile'],
+            hotel_price = request.POST['hotelprice'],
+            hotel_wifi = True if request.POST['hotelwifi'] == 'yes' else False,
+            hotel_photos = request.FILES['hotelphotos'],
+            add_details = request.POST['hoteladddetails'],
+            hotel_acroom = request.POST['hotelacroom'],
+            bed_room = request.FILES['hotelbedroom'],
+            beds_room = request.FILES['hotelbedsroom'],
+            swimming_pool = request.FILES['hotelswimmingpool'],
+            hotel_frontview = request.FILES['hotelfrontview'],
         )
         msg = 'Hotel is Add'
         return render(request,'add-hotels.html',{'uid':uid, 'msg':msg} )      
@@ -156,4 +160,40 @@ def hotels_fpassword(request):
             return render(request,'hotelslogin.html',{'msg':msg})
     return render(request,'hotels_fpassword.html')
             
+
+def edit(request,ck):
+    hotel = Hotel.objects.get(id=ck)
+    uid = User.objects.get(email=request.session['email'])
+    if request.method == 'POST':
+        hotel.uid = uid
+        hotel.hotel_name = request.POST['hotelname']
+        hotel.hotel_price = request.POST['hotelprice']
+        hotel.hotel_country = request.POST['hotelcountry']
+        hotel.hotel_address = request.POST['hoteladdress']
+        hotel.hotel_rooms = request.POST['hotelsrooms']
+        hotel.hotel_mobile = request.POST['hotelmobile'] 
+        hotel.hotel_details = request.POST['hoteladddetails']
         
+        
+        
+
+        if 'hotelphotos' in request.FILES:
+            hotel.hotel_photos = request.FILES['hotelphotos']
+        if  'hotelbedroom' in request.FILES: 
+            hotel.bed_room = request.FILES['hotelbedroom']
+        if  'hotelbedsroom' in request.FILES:             
+            hotel.beds_room = request.FILES['hotelbedsroom']
+        if  'hotelswimmingpool' in request.FILES: 
+            hotel.swimming_pool = request.FILES['hotelswimmingpool']
+        if  'hotelfrontview' in request.FILES: 
+            hotel.hotel_frontview = request.FILES['hotelfrontview']
+            
+        hotel.save()
+        msg = 'Hotel is Update'
+    return render(request,'edit.html',{'uid':uid,'hotel':hotel,'msg':msg})         
+
+
+def delete_hotel(request,pk):
+    hotel = Hotel.objects.get(id=pk)
+    hotel.delete()
+    return redirect('hotelstables')

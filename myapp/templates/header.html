@@ -45,7 +45,7 @@ http://www.templatemo.com/tm-409-travel
                         <div class="col-md-8 col-sm-6 col-xs-2">
                             <div class="main-menu">
                                 <ul class="visible-lg visible-md">
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="{% url 'index' %}">Home</a></li>
                                     
                                     <li><a href="{% url 'hotels2'  %}">Hotels</a></li>
                                     <li><a href="{% url 'about' %}">About Us</a></li>
@@ -68,12 +68,12 @@ http://www.templatemo.com/tm-409-travel
                     <div class="col-md-12 visible-sm visible-xs">
                         <div class="menu-responsive">
                             <ul>
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li><a href="hotels2.html">Hotels</a></li>
+                                <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                                <li><a href="{% url 'hotels2'  %}">Hotels</a></li>
                                 
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li class="login"><a href="login.html">login</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'profile' %}">Profile</a></li>
+                                <li class="login"><a href="{% url 'login' %}">login</a></li>
                             </ul>
                         </div> <!-- /.menu-responsive -->
                     </div> <!-- /.col-md-12 -->
@@ -116,7 +116,7 @@ http://www.templatemo.com/tm-409-travel
                         <div class="copyright">
                             <span>
                             	
-                                Copyright &copy; 2014 <a href="#">Company Name</a>
+                                 &copy; 2022 <a href="#">Traveling</a>
                             
                             
                             <!--
@@ -140,7 +140,7 @@ http://www.templatemo.com/tm-409-travel
         </div> <!-- /.site-footer -->
 
         <script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"></script>
-        <script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-min.js' %}"></script>')</script>
+        <script src="{% static 'js/vendor/jquery-min.js' %}"></script>
         <script src="{% static 'js/bootstrap.js' %}"></script>
         <script src="{% static 'js/plugins.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>

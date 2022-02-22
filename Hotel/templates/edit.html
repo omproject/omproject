@@ -1,0 +1,127 @@
+{% extends 'hotelsheader.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white"></h1>
+            <p class="text-white mt-0 mb-5"></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        
+        <div class="col-xl-8 order-xl-1">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Edit Hotel </h3>
+                </div>
+                <!-- <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                </div> -->
+              </div>
+            </div>
+            <div class="card-body">
+              <form role="form" action="{% url 'edit' hotel.id %}" method="POST"enctype="multipart/form-data" >
+                {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+              {{msg}}
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-username">Hotel Name</label>
+                        <input type="text" id="input-username" class="form-control" name="hotelname" placeholder="Hotel Name" value="{{hotel.hotel_name}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Hotel Address</label>
+                        <input type="text" id="" class="form-control" name="hoteladdress" placeholder="Hotel Address" value="{{hotel.hotel_address}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Hotel rooms</label>
+                        <input type="number" id="" class="form-control" name="hotelsrooms" placeholder="Hotel rooms" value="{{hotel.hotel_rooms}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Hotel Price</label>
+                        <input type="text" id="" class="form-control" name="hotelprice" placeholder="Hotel Price" value="{{hotel.hotel_price}}">
+                      </div>
+                    </div>
+              
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Hotel Country</label>
+                        <input type="text" class="form-control" name="hotelcountry" placeholder="Hotel Country" value="{{hotel.hotel_country}}" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-mobile">Hotel Mobile</label>
+                        <input type="text" id="input" class="form-control" name="hotelmobile" placeholder="Mobile" value="{{hotel.hotel_mobile}}">
+                      </div>
+                    </div>
+                    <div class="pl-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label">Add details</label>
+                        
+                        <textarea rows="4" class="form-control" name="hoteladddetails"  placeholder="Add A More Details Of Hotel.">{{hotel.add_details}}</textarea>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <br><br><br><br><br>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Hotel Photos</label>
+                    <input type="file" class="form-control" placeholder="" name="hotelphotos" value="{{hotel.hotel_photos.url}}">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label">Bed Room Photos</label>
+                    <input type="file" class="form-control" placeholder="" name="hotelbedroom" value="{{hotel.bed_room.url}}">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label">Beds Room Photos</label>
+                    <input type="file" class="form-control" placeholder="" name="hotelbedsroom" value="{{hotel.beds_room.url}}">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label">Swimming Pool Photos</label>
+                    <input type="file" class="form-control" placeholder="" name="hotelswimmingpool" value="{{hotel.swimming_pool.url}}">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label">Hotel Frontview Photos</label>
+                    <input type="file" class="form-control" placeholder="" name="hotelfrontview" value="{{hotel.hotel_frontview}}">
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary mt-4"><i class="submit"></i>   Edit profile</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+
+      {% endblock %}

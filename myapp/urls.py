@@ -13,6 +13,11 @@ urlpatterns = [
     path('fpassword/',views.fpassword,name='fpassword'),
     path('booking/<int:bk>',views.booking,name='booking'),
     path('Aview_hotels/<int:pk>',views.Aview_hotels,name='Aview_hotels'),
+    # path('payment/', views.payment, name='payment'),
+    path('booking/paymenthandler/', views.paymenthandler, name='paymenthandler'),
+    path('paymentfail/',views.paymentfail,name='paymentfail'),
+    path('paymentsuccess/',views.paymentsuccess,name='paymentsuccess'),
+
 ]
 
 

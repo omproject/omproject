@@ -1,78 +1,35 @@
-from plistlib import UID
-from re import T
-from django.core.checks import messages
 from django.shortcuts import redirect, render
-from django.urls import path
-# from datetime import date
-
+from datetime import date
 from django.http.response import HttpResponse
 from Hotel.models import Hotel
 from .models import *
 from random import choices,choice,randrange
-from django.conf import settings
 from django.core.mail import send_mail
-
-
-
+import razorpay
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseBadRequest
+# import uuid
 from myapp.models import User
 
 # create your view here
 
 def index(request):
  #   uid = User.objects.get(email=request.session['email'])
-    return render(request,'index.html')
+    hotel = Hotel.objects.all()[::-1]
+    return render(request,'index.html',{'hotel':hotel})
 
 def about(request):
     return render(request,'about.html')
 
 def Aview_hotels(request,pk):
     hotel = Hotel.objects.get(id=pk)
-    return render(request,'Aview_hotels.html',{'hotel':hotel})    
-
+    return render(request,'Aview_hotels.html',{'hotel':hotel})     
    
 
 def hotels2(request):
     hotel = Hotel.objects.all()[::-1]
     return render(request,'hotels2.html',{'hotel':hotel}) 
-
-def register(request):
-    return render(request,'register.html')
-
-def booking(request,bk):
-    hotel = Hotel.objects.get(id=bk)
-    uid = User.objects.get(email=request.session['email']),
-
-    if request.method == 'POST': 
-        price =  int(request.POST['no_person']) / 4
-        if price == int(price):
-            price = price * int(hotel.hotel_price)
-        price = (int(price)+1) * int(hotel.hotel_price)
-
-        # date
-
-        # check_in = request.POST['check_in'],
-        # check_out = request.POST['check_out'],
-
-
-
-
-        bookingUser.objects.create(
-            uid = User.objects.get(email=request.session['email']),
-            hname = hotel,
-            check_in = request.POST['check_in'],
-            check_out = request.POST['check_out'],
-            no_person = request.POST['no_person'], 
-            bookprice = price,
-        )
-        msg = 'Hotel is Book'
-        return render(request,'booking.html',{'hotel':hotel,'msg':msg,'uid':uid})
-    return render(request,'booking.html',{'hotel':hotel})     
-
-def otp(request):
-    return render(request,'otp.html')
-
-def login(request):
-    return render(request,'login.html')
     
 def logout(request):
     del request.session['email']
@@ -186,11 +143,117 @@ def fpassword(request):
 
 
 
+
+
+
+
+
+razorpay_client = razorpay.Client(
+    auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+ 
+ 
+def booking(request,bk):
+    hotel = Hotel.objects.get(id=bk)
+    uid = User.objects.get(email=request.session['email']),
+
+    if request.method == 'POST': 
+        price =  int(request.POST['no_person']) / 4
+        if price == int(price):
+            price = price * int(hotel.hotel_price)
+
+        check_in = request.POST['check_in'].split('-')
+        check_out = request.POST['check_out'].split('-')
+
+        indate = date(int(check_in[0]),int(check_in[1]),int(check_in[2]))
+        outdate = date(int(check_out[0]),int(check_out[1]),int(check_out[2]))
+        day = int((outdate - indate).days)
+        print(day)
+        price = (int(price)+1) * int(hotel.hotel_price) * day
+        request.session['payuser'] = price*100
+        currency = 'INR'
+        amount = price*100 #price*100  # Rs. 200
         
+        # Create a Razorpay Order
+        razorpay_order = razorpay_client.order.create(dict(amount=amount,
+                                                        currency=currency,
+                                                        payment_capture='0'))
+    
+        # order id of newly created order.
+        razorpay_order_id = razorpay_order['id']
+        callback_url = 'paymenthandler/'
+    
+        # we need to pass these details to frontend.
+        context = {}
+        context['razorpay_order_id'] = razorpay_order_id
+        context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
+        context['razorpay_amount'] = amount
+        context['currency'] = currency
+        context['callback_url'] = callback_url
+        context.update({'hotel':hotel,'uid':uid})
+        return render(request,'payment.html',context=context)
+    return render(request,'booking.html',{'hotel':hotel})  
+ 
+ 
+# we need to csrf_exempt this url as
+# POST request will be made by Razorpay
+# and it won't have the csrf token.
+@csrf_exempt
+def paymenthandler(request):
+ 
+    # only accept POST request.
+    if request.method == "POST":
+        try:
+           
+            # get the required parameters from post request.
+            payment_id = request.POST.get('razorpay_payment_id', '')
+            razorpay_order_id = request.POST.get('razorpay_order_id', '')
+            signature = request.POST.get('razorpay_signature', '')
+            params_dict = {
+                'razorpay_order_id': razorpay_order_id,
+                'razorpay_payment_id': payment_id,
+                'razorpay_signature': signature
+            }
+ 
+            # verify the payment signature.
+            result = razorpay_client.utility.verify_payment_signature(
+                params_dict)
+            if result is None:
+                print(request.session['payuser'], type(request.session['payuser']))
+                amount = request.session['payuser']  # Rs. 200
+                del request.session['payuser']
+                try:
+ 
+                    # capture the payemt
+                    razorpay_client.payment.capture(payment_id, amount)
+                    # test = uuid.uuid4()
+                    # object = bookingUser.objects.create( = test)
+                    # geek_object.save()
+ 
+                    # render success page on successful caputre of payment
+                    return render(request, 'paymentsuccess.html')
+                except:
+ 
+                    # if there is an error while capturing payment.
+                    return render(request, 'paymentfail.html')
+            else:
+ 
+                # if signature verification fails.
+                return render(request, 'paymentfail.html')
+        except:
+ 
+            # if we don't find the required parameters in POST data
+            return HttpResponseBadRequest()
+    else:
+       # if other than POST request is made.
+        return HttpResponseBadRequest()
 
 
 
+def paymentsuccess(request):
+    return render(request,'paymentsuccess.html')
 
+def paymentfail(request):
+    return render(request,'paymentfail.html')    
 
 
 
