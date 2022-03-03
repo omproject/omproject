@@ -23,7 +23,7 @@ class User(models.Model):
         return self.fname + ' ' + self.lname
 
 
-class bookingUser(models.Model):
+class BookingUser(models.Model):
 
     uid = models.ForeignKey(User,on_delete=models.CASCADE)
     hname = models.ForeignKey(Hotel,on_delete=models.CASCADE)

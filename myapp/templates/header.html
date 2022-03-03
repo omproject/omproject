@@ -50,6 +50,7 @@ http://www.templatemo.com/tm-409-travel
                                     <li><a href="{% url 'hotels2'  %}">Hotels</a></li>
                                     <li><a href="{% url 'about' %}">About Us</a></li>
                                     {% if request.session.email %}
+                                    <li><a href="{% url 'reservation' %}">Reservation</a></li>
                                     <li><a href="{% url 'profile' %}">Profile</a></li>
                                     <li><a href="{% url 'logout' %}">logout</a></li>
 

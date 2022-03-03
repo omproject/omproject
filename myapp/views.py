@@ -142,7 +142,8 @@ def fpassword(request):
 
 
 
-
+def paymentsuccess(request):
+    return render(request,'paymentsuccess.html')
 
 
 
@@ -170,6 +171,10 @@ def booking(request,bk):
         print(day)
         price = (int(price)+1) * int(hotel.hotel_price) * day
         request.session['payuser'] = price*100
+        request.session['in'] = request.POST['check_in']
+        request.session['out'] = request.POST['check_out']
+        request.session['person'] = request.POST['no_person']
+        
         currency = 'INR'
         amount = price*100 #price*100  # Rs. 200
         
@@ -180,7 +185,7 @@ def booking(request,bk):
     
         # order id of newly created order.
         razorpay_order_id = razorpay_order['id']
-        callback_url = 'paymenthandler/'
+        callback_url = f'paymenthandler/{hotel.id}'
     
         # we need to pass these details to frontend.
         context = {}
@@ -198,8 +203,8 @@ def booking(request,bk):
 # POST request will be made by Razorpay
 # and it won't have the csrf token.
 @csrf_exempt
-def paymenthandler(request):
- 
+def paymenthandler(request,pk):
+    
     # only accept POST request.
     if request.method == "POST":
         try:
@@ -222,15 +227,26 @@ def paymenthandler(request):
                 amount = request.session['payuser']  # Rs. 200
                 del request.session['payuser']
                 try:
- 
+                    
                     # capture the payemt
                     razorpay_client.payment.capture(payment_id, amount)
                     # test = uuid.uuid4()
                     # object = bookingUser.objects.create( = test)
                     # geek_object.save()
- 
+                    uid = User.objects.get(email=request.session['email'])
+                    hotel = Hotel.objects.get(id=pk)
                     # render success page on successful caputre of payment
-                    return render(request, 'paymentsuccess.html')
+                    book = BookingUser.objects.create(
+                        uid = uid,
+                        hname = hotel,
+                        check_in = request.session['in'],
+                        check_out = request.session['out'],
+                        no_person = request.session['person'],
+                        bookprice = amount//100,
+                        
+                    )
+
+                    return render(request, 'paymentsuccess.html',{'book':book})
                 except:
  
                     # if there is an error while capturing payment.
@@ -247,13 +263,10 @@ def paymenthandler(request):
        # if other than POST request is made.
         return HttpResponseBadRequest()
 
+def reservation(request):
+    return render(request,'reservation.html')
 
-
-def paymentsuccess(request):
-    return render(request,'paymentsuccess.html')
-
-def paymentfail(request):
-    return render(request,'paymentfail.html')    
+   
 
 
 

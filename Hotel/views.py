@@ -189,7 +189,7 @@ def edit(request,ck):
             hotel.hotel_frontview = request.FILES['hotelfrontview']
             
         hotel.save()
-        msg = 'Hotel is Update'
+    msg = 'Hotel is Update'
     return render(request,'edit.html',{'uid':uid,'hotel':hotel,'msg':msg})         
 
 
