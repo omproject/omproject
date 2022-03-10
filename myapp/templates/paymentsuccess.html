@@ -3,68 +3,58 @@
 
 {% block content %}
 
-<div class="container" style="height: 100vh; padding: 200px 0;">
-    <h1 style="font-size: 75px;">Payment Success</h1>
+<div class="container" style="height: 50vh; padding: 200px 0;">
+    <h1 style="font-size: 60px;">Payment Success</h1>
 </div>
-
-
-  
   <!-- Page content -->
   <div class="container-fluid mt--6">
     <div class="row">
       <div class="col-xl-4 order-xl-2 mb-4">
-        <div class="card card-profile" style="height: 100%;">
+        <!-- <div class="card card-profile" style="height: 100%;"> -->
           <!-- <img src="../assets/img/theme/img-1-1000x600.jpg" alt="Image placeholder" class="card-img-top"> -->
           <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
-               
               </div>
             </div>
           </div>
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-             
-            </div>
-          
-            
+          </div>
             <div class="text-center">
               <h5 class="h3">
               <label>Hotel Name:</label>
               {{book.hname.hotel_name}}<span class="font-weight-light"></span>
               </h5>
               <div class="h5 font-weight-300">
-                <h5 class="h5">
+                <h5 class="h3">
                 <label>Hotel Price:</label>
-                <i class="ni location_pin mr-2"></i>{{book.bookprice}}
+                <i class="ni business_briefcase-24 mr-2"></i>{{book.bookprice}}
                 </h5>
               </div>
-              <div class="h5 mt-4">
+              <div class="h3 mt-4">
                 <label>Hotel Check In Date:</label>
                 <i class="ni business_briefcase-24 mr-2"></i>{{book.check_in}}
               </div>
-              <div class="h5 mt-4">
+              <div class="h3 mt-4">
                 <label>Hotel Check Out Date:</label>
                 <i class="ni business_briefcase-24 mr-2"></i>{{book.check_out}}
               </div>
               <div>
-              <h5 class="h5">
+              <h5 class="h3">
                 <label>Booking User:</label>
-                <i class="ni education_hat mr-2"></i>{{book.uid}}
+                <i class="ni business_briefcase-24 mr-2"></i>{{book.uid}}
                 </h5>
-                <h3 class="h5 mt-4">
+                <h3 class="h3 ">
                   <label>Booking Id:</label>
                   {{book.booking_id}}<span class="font-weight-light"></span>
                   </h3>
               </div>
             </div>
-            
-          </div>
-        </div>
+        <!-- </div> -->
       </div>
-    
-      
     </div>
+  </div>  
 
 
     <br><br><br><br><br>

@@ -158,9 +158,7 @@ def booking(request,bk):
     uid = User.objects.get(email=request.session['email']),
 
     if request.method == 'POST': 
-        price =  int(request.POST['no_person']) / 4
-        if price == int(price):
-            price = price * int(hotel.hotel_price)
+        
 
         check_in = request.POST['check_in'].split('-')
         check_out = request.POST['check_out'].split('-')
@@ -168,8 +166,12 @@ def booking(request,bk):
         indate = date(int(check_in[0]),int(check_in[1]),int(check_in[2]))
         outdate = date(int(check_out[0]),int(check_out[1]),int(check_out[2]))
         day = int((outdate - indate).days)
-        print(day)
-        price = (int(price)+1) * int(hotel.hotel_price) * day
+        # print(day)
+        price =  int(request.POST['no_person']) / 4
+        if price == int(price):
+            price = int(price) * int(hotel.hotel_price) * day
+        else:
+            price = (int(price)+1) * int(hotel.hotel_price) * day
         request.session['payuser'] = price*100
         request.session['in'] = request.POST['check_in']
         request.session['out'] = request.POST['check_out']
@@ -223,7 +225,7 @@ def paymenthandler(request,pk):
             result = razorpay_client.utility.verify_payment_signature(
                 params_dict)
             if result is None:
-                print(request.session['payuser'], type(request.session['payuser']))
+                # print(request.session['payuser'], type(request.session['payuser']))
                 amount = request.session['payuser']  # Rs. 200
                 del request.session['payuser']
                 try:
@@ -264,7 +266,9 @@ def paymenthandler(request,pk):
         return HttpResponseBadRequest()
 
 def reservation(request):
-    return render(request,'reservation.html')
+    uid = User.objects.get(email=request.session['email'])
+    book = BookingUser.objects.filter(uid=uid)[::-1]
+    return render(request,'reservation.html',{'books':book})
 
    
 

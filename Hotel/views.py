@@ -8,17 +8,17 @@ from django.core.mail import send_mail
 # Create your views here.
 
 def hotelsindex(request):
-    uid = User.objects.get(email=request.session['email'])
+    uid = User.objects.get(email=request.session['emails'])
     return render(request,'hotelsindex.html',{'uid':uid})
 
 
 def hotelsprofile(request):
-    uid = User.objects.get(email=request.session['email'])
+    uid = User.objects.get(email=request.session['emails'])
     return render(request,'hotelsprofile.html',{'uid':uid})
 
 def hotelstables(request):
-    uid = User.objects.get(email=request.session['email'])
-    hotels = Hotel.objects.all()[::-1]
+    uid = User.objects.get(email=request.session['emails'])
+    hotels = Hotel.objects.filter(uid=uid)[::-1]
     return render(request,'hotelstables.html',{'uid':uid,'hotel':hotels})
 
 # def hotelsupgrade(request):
@@ -26,7 +26,7 @@ def hotelstables(request):
 #     return render(request,'hotelsupgrade.html',{'uid':uid})
 
 def add_hotels(request):
-    uid = User.objects.get(email=request.session['email'])
+    uid = User.objects.get(email=request.session['emails'])
     if request.method == 'POST':
         Hotel.objects.create(
             uid = uid,
@@ -50,7 +50,7 @@ def add_hotels(request):
     return render(request,'add-hotels.html',{'uid':uid} )      
 
 def hotelslogout(request):
-    del request.session['email']
+    del request.session['emails']
     return redirect('hotelslogin')              
 
 
@@ -65,7 +65,7 @@ def hotelslogin(request):
          try:
             uid = User.objects.get(email=request.POST['email'])
             if uid.password == request.POST['password']:
-                request.session['email'] = request.POST['email']
+                request.session['emails'] = request.POST['email']
 
                 return render(request,'hotelsindex.html',{'uid':uid})
             else:
@@ -92,7 +92,7 @@ def hotelsregister(request):
                Your Verification OTP is : {otp}.
                """
                email_from = settings.EMAIL_HOST_USER
-               recipient_list = [request.POST['email']]
+               recipient_list = [request.POST['emails']]
                send_mail( subject, message, email_from, recipient_list )
                global temp
                temp = {
@@ -128,7 +128,7 @@ def hotelsotp(request):
     return render(request,'hotelsotp.html')               
 
 def hotelsprofile(request):
-    uid = User.objects.get(email=request.session['email'])
+    uid = User.objects.get(email=request.session['emails'])
     if request.method == 'POST':
         uid.name = request.POST['name']
         uid.password = request.POST['password']
@@ -163,7 +163,7 @@ def hotels_fpassword(request):
 
 def edit(request,ck):
     hotel = Hotel.objects.get(id=ck)
-    uid = User.objects.get(email=request.session['email'])
+    uid = User.objects.get(email=request.session['emails'])
     if request.method == 'POST':
         hotel.uid = uid
         hotel.hotel_name = request.POST['hotelname']

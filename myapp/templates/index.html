@@ -59,30 +59,27 @@
         </div> <!-- /.flexslider -->
         
 
-        
+        {% for hid in hotel %}
         <div class="container">
-            <div class="row" style="background-color: rgb(29, 18, 18);">
-                {% for vid in hotel %}
-                
-                <div  class="col-md-6">
+            <div class="row">
+                <div  class="our-listing owl-carousel">
                     <div class="list-item">
                         <div class="list-thumb">
                             <div class="title">
-                                <h4>{{vid.hotel_name}}</h4>
+                                <h4>{{hid.hotel_name}}</h4>
                             </div>
-                            <img src="{{vid.hotel_photos.url}}" alt="destination 1">
+                            <img src="{{hid.hotel_photos.url}}" alt="destination 1">
                         </div> <!-- /.list-thumb -->
                         <div class="list-content">
-                            <h5></h5>
-                            <span>{{vid.hotel_address}}</span>
-                            <a href="#" class="price-btn">{{vid.hotel_price}} Book Now</a>
+                            <h5>{{hid.hotel_address}}</h5>
+                            <span></span>
+                            <a href="#" class="price-btn">{{hid.hotel_price}} Book Now</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
-                </div> <!-- /.our-listing -->
-
-                {% endfor %}    
+                </div> <!-- /.our-listing -->    
             </div> <!-- /.row -->
         </div> <!-- /.container -->
+        {% endfor %}
 
 		<div class="middle-content"></div>
         

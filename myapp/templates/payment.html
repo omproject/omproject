@@ -1,3 +1,7 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,18 +59,19 @@
 	}
 	</style>
 </head>
+<br><br><br><br><br><br><br>
 <body>
 	<div class="card">
-	<h1 class="title">Buy Me a Chai </h1>
-	<small class="muted"
-		>If you like my work, you can support me by donating ₹200</small
+	<h1 class="title">Payment</h1>
+	<small class="muted"></small
 	>
 	<div class="btn_container">
 		<!-- Payment Button -->
-		<button class="btn" id="pay-btn">Donate</button>
+		<button class="btn" id="pay-btn">Pay The Payment</button>
 	</div>
 	</div>
 </body>
+<br><br><br><br><br><br>
 
 <!-- Razorpay's Javascript code. -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -100,3 +105,4 @@
 	};
 </script>
 </html>
+{% endblock %}
