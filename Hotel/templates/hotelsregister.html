@@ -59,12 +59,12 @@
         <ul class="navbar-nav mr-auto">
           
           <li class="nav-item">
-            <a href="hotelslogin.html" class="nav-link">
+            <a href="{% url 'hotelslogin' %}" class="nav-link">
               <span class="nav-link-inner--text">Login</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="hotelsregister.html" class="nav-link">
+            <a href="{% url 'hotelsregister' %}l" class="nav-link">
               <span class="nav-link-inner--text">Register</span>
             </a>
           </li>
@@ -152,7 +152,7 @@
                     <input class="form-control" placeholder="Password" type="password" name="password" required>
                   </div>
                 </div>
-                <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">

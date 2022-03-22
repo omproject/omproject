@@ -4,10 +4,18 @@
 {% block content %}
 
 <div class="container" style="height: 50vh; padding: 200px 0;">
-    <h1 style="font-size: 60px;">Payment Success</h1>
+  
+    <h1 style="font-size: 75px;  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; width: 1000px;
+    border: 7px solid rgb(21, 212, 21);
+    background-color: rgb(232, 238, 233);
+    padding: 50px;
+    margin: 20px;">
+      Payment Success   <i class="fa fa-check-circle" style="font-size:48px;color:#66ee0b"></i></h1>
 </div>
+<br><br>
+<br><br>
   <!-- Page content -->
-  <div class="container-fluid mt--6">
+  <div class="container-fluid mt-6  ">
     <div class="row">
       <div class="col-xl-4 order-xl-2 mb-4">
         <!-- <div class="card card-profile" style="height: 100%;"> -->
@@ -21,22 +29,32 @@
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
           </div>
-            <div class="text-center">
+          <style>
+            .payment-data{
+              width : 50%;
+              padding: 10px;
+              border: 2px solid black;
+              margin: 10px auto;
+            }
+
+            .payment-data .h3{
+              text-align: left;
+            }
+</style>
+            <div class="text-center payment-data">
               <h5 class="h3">
               <label>Hotel Name:</label>
               {{book.hname.hotel_name}}<span class="font-weight-light"></span>
               </h5>
-              <div class="h5 font-weight-300">
-                <h5 class="h3">
+              <div class="h3">
                 <label>Hotel Price:</label>
-                <i class="ni business_briefcase-24 mr-2"></i>{{book.bookprice}}
-                </h5>
+                <i class="ni business_briefcase-24 mr-2"></i>₹{{book.bookprice}}
               </div>
-              <div class="h3 mt-4">
+              <div class="h3">
                 <label>Hotel Check In Date:</label>
                 <i class="ni business_briefcase-24 mr-2"></i>{{book.check_in}}
               </div>
-              <div class="h3 mt-4">
+              <div class="h3">
                 <label>Hotel Check Out Date:</label>
                 <i class="ni business_briefcase-24 mr-2"></i>{{book.check_out}}
               </div>
@@ -44,12 +62,16 @@
               <h5 class="h3">
                 <label>Booking User:</label>
                 <i class="ni business_briefcase-24 mr-2"></i>{{book.uid}}
-                </h5>
-                <h3 class="h3 ">
+                <h3 class="h3">
                   <label>Booking Id:</label>
-                  {{book.booking_id}}<span class="font-weight-light"></span>
+                  {{book.booking_id}}
+                </h3>
+                <h3 class="h3">
+                  <label>Payment Id:</label>
+                  {{book.pay_id}}
                   </h3>
               </div>
+          
             </div>
         <!-- </div> -->
       </div>

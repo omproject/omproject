@@ -1,3 +1,5 @@
+from email import message
+import email
 from django.shortcuts import redirect, render
 from datetime import date
 from django.http.response import HttpResponse
@@ -145,6 +147,9 @@ def fpassword(request):
 def paymentsuccess(request):
     return render(request,'paymentsuccess.html')
 
+# def paymentfail(request):
+#     return render(request,'paymentfail.html')    
+
 
 
 
@@ -230,10 +235,9 @@ def paymenthandler(request,pk):
                 del request.session['payuser']
                 try:
                     
-                    # capture the payemt
+                        # capture the payemt
                     razorpay_client.payment.capture(payment_id, amount)
                     # test = uuid.uuid4()
-                    # object = bookingUser.objects.create( = test)
                     # geek_object.save()
                     uid = User.objects.get(email=request.session['email'])
                     hotel = Hotel.objects.get(id=pk)
@@ -245,9 +249,18 @@ def paymenthandler(request,pk):
                         check_out = request.session['out'],
                         no_person = request.session['person'],
                         bookprice = amount//100,
-                        
+                        pay_id = payment_id    
                     )
-
+                    subject = 'Thank you.'
+                    message = f"""Hello 
+                    Your Hotel Is Book : 
+                    Booking User:{uid},
+                    Payment ID:{payment_id} ,
+                    Hotel Name:{hotel},
+                    Booking Price:{amount//100}"""
+                    email_from = settings.EMAIL_HOST_USER
+                    recipient_list = [request.session['email']]
+                    send_mail( subject, message, email_from, recipient_list )
                     return render(request, 'paymentsuccess.html',{'book':book})
                 except:
  

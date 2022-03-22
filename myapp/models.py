@@ -33,6 +33,8 @@ class BookingUser(models.Model):
     bookprice = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now_add=True)
     booking_id = models.UUIDField(editable = False,unique=True,default=uuid.uuid4)
+    pay_id = models.CharField(max_length=50,null=True,blank=True)
+    cancel_payment = models.BooleanField(default=False)
 
     def __str__(self):
         return self.uid.fname + '' + self.hname.hotel_name  
