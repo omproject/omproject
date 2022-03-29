@@ -40,7 +40,7 @@
                         <div class="list-content">
                             <h5>{{hid.hotel_address}}</h5>
                             <span></span>
-                            <a href="#" class="price-btn">₹{{hid.hotel_price}} Book Now</a>
+                            <a href="{% url 'Aview_hotels' hid.id %}" class="price-btn">₹{{hid.hotel_price}} Book Now</a>
                         </div> <!-- /.list-content -->
                     </div> <!-- /.list-item -->
                     {% endfor %}

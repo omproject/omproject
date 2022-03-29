@@ -15,7 +15,7 @@
                 <h3 class="widget-title">LOGIN</h3>
                 <div class="contact-form">
                     {{msg}}
-                    <form name="Loginform" id="loginform" action="{% url 'login'%}" method="POST">
+                    <form name="Loginform" id="loginform" action="{% url 'login' %}" method="POST">
                         {% csrf_token %}
                         <p>
                             <input name="email" type="email" id="email" placeholder="Email">

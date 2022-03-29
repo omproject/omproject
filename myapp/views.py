@@ -1,5 +1,7 @@
+from ctypes.wintypes import MSG
 from email import message
 import email
+from turtle import color
 from django.shortcuts import redirect, render
 from datetime import date
 from django.http.response import HttpResponse
@@ -39,10 +41,10 @@ def logout(request):
            
 
 def login(request):
-   # try:
-   #     uid = User.objects.get(email=request.session['email'])
-   #     return render(request,'index.html')
-   # except:
+#    try:
+#        uid = User.objects.get(email=request.session['email'])
+#        return render(request,'index.html',{'uid':uid})
+#    except:
       if request.method == 'POST':
          try:
             uid = User.objects.get(email=request.POST['email'])
@@ -146,10 +148,7 @@ def fpassword(request):
 
 def paymentsuccess(request):
     return render(request,'paymentsuccess.html')
-
-# def paymentfail(request):
-#     return render(request,'paymentfail.html')    
-
+  
 
 
 
@@ -251,13 +250,14 @@ def paymenthandler(request,pk):
                         bookprice = amount//100,
                         pay_id = payment_id    
                     )
-                    subject = 'Thank you.'
+                    subject = 'Thank you'
                     message = f"""Hello 
                     Your Hotel Is Book : 
-                    Booking User:{uid},
-                    Payment ID:{payment_id} ,
-                    Hotel Name:{hotel},
-                    Booking Price:{amount//100}"""
+                    Booking User:{uid}
+                    Payment ID:{payment_id}
+                    Hotel Name:{hotel}
+                    Booking Price:{amount//100}
+                    """
                     email_from = settings.EMAIL_HOST_USER
                     recipient_list = [request.session['email']]
                     send_mail( subject, message, email_from, recipient_list )
@@ -283,7 +283,16 @@ def reservation(request):
     book = BookingUser.objects.filter(uid=uid)[::-1]
     return render(request,'reservation.html',{'books':book})
 
-   
+
+def cancelbooking(request,dk):
+    book = BookingUser.objects.get(id=dk)
+    book.cancel_payment = True
+    book.save()
+    msg = 'Your fund Is Refund in 2 To 3 Days.'
+    uid = User.objects.get(email=request.session['email'])
+    book = BookingUser.objects.filter(uid=uid)[::-1]
+
+    return render(request,'reservation.html',{'books':book,'msg':msg})   
 
 
 

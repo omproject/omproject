@@ -18,6 +18,8 @@ urlpatterns = [
     # path('paymentfail/',views.paymentfail,name='paymentfail'),
     path('paymentsuccess/',views.paymentsuccess,name='paymentsuccess'),
     path('reservation/',views.reservation,name='reservation'),
+    path('cancelbooking/<int:dk>',views.cancelbooking,name='cancelbooking'), 
+
 
 ]
 

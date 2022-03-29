@@ -69,6 +69,7 @@
 	<div class="btn_container">
 		<!-- Payment Button -->
 		<button class="btn" id="pay-btn">Pay The Payment</button>
+		<a href="{% url 'booking' hotel.id %}"><button class="btn btn-primary" style="width: auto; background-color:rgb(219, 41, 41);"> Back  </button></a>
 	</div>
 	</div>
 </body>
@@ -89,7 +90,7 @@
 	currency: "{{ currency }}",
 	
 	// Your/store name.
-	name: "Dj Razorpay",
+	name: "Pay The Payment",
 	
 	// Pass the `id` obtained in the response of Step 1
 	order_id: "{{ razorpay_order_id }}",
